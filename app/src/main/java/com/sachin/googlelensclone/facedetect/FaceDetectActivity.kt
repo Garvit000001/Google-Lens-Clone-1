@@ -1,4 +1,4 @@
-package com.sachin.googlelensclone.barcode
+package com.sachin.googlelensclone.facedetect
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -13,15 +13,14 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.sachin.googlelensclone.R
-import kotlinx.android.synthetic.main.activity_barcode.*
+import kotlinx.android.synthetic.main.activity_face_detect.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-open class BarcodeActivity : AppCompatActivity() {
-
+open class FaceDetectActivity: AppCompatActivity() {
     private lateinit var cameraExecutor: ExecutorService
 
-    private val imageAnalyzer: ImageAnalysis.Analyzer =ImageLabelAnalyzer()
+    private val imageAnalyzer: ImageAnalysis.Analyzer = FaceDetectAnalyser()
     private var imageAnalysis = ImageAnalysis.Builder()
         .setImageQueueDepth(ImageAnalysis.STRATEGY_BLOCK_PRODUCER)
         .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
@@ -31,11 +30,11 @@ open class BarcodeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_barcode)
+        setContentView(R.layout.activity_face_detect)
         //function call for analysis
 
-        btnLabelScaner.setOnClickListener {
-            startImageLabeling()
+        btnFaceR.setOnClickListener {
+            startFaceDetect()
 
         }
         // Request camera permissions
@@ -43,11 +42,11 @@ open class BarcodeActivity : AppCompatActivity() {
         askCameraPermission()
 
 
-    cameraExecutor = Executors.newSingleThreadExecutor()
+        cameraExecutor = Executors.newSingleThreadExecutor()
     }
     companion object {
         private const val TAG = "CameraXBasic"
-//        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+        //        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
 //        private const val REQUEST_CODE_PERMISSIONS = 10
 //        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         const val CAMERA_PERM_CODE = 422
@@ -93,7 +92,7 @@ open class BarcodeActivity : AppCompatActivity() {
             val preview = Preview.Builder()
                 .build()
                 .also {
-                    it.setSurfaceProvider(viewFinder.surfaceProvider)
+                    it.setSurfaceProvider(FaceViewFinder.surfaceProvider)
                 }
 
 
@@ -107,7 +106,7 @@ open class BarcodeActivity : AppCompatActivity() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                        this, cameraSelector, preview, imageAnalysis)
+                    this, cameraSelector, preview, imageAnalysis)
 
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
@@ -141,20 +140,14 @@ open class BarcodeActivity : AppCompatActivity() {
 //        }
 //    }
 
-    private fun startImageLabeling(){
+    private fun startFaceDetect() {
         imageAnalysis.setAnalyzer(
-                ContextCompat.getMainExecutor(this),
-                imageAnalyzer
+            ContextCompat.getMainExecutor(this),
+            imageAnalyzer
         )
-        tvLabel.text= labelDone.toString()
-        tvLabelAcc.text= labelAcc.toString()
 
+        FaceDetectText.text= facetext.toString()
     }
+
 }
-
-
-
-
-
-
 

@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.hide()
+
         btnTakePic.setOnClickListener{
             val takePhotoIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             try {

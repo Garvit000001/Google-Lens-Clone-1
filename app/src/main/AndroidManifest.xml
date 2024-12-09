@@ -16,8 +16,10 @@
         android:roundIcon="@drawable/icon_main"
         android:supportsRtl="true"
         android:theme="@style/Theme.GoogleLensClone">
+        <activity android:name=".ImageLabel.ImageLabelActivity" />
+        <activity android:name=".Barcode.BarcodeDetectActivity"></activity>
+        <activity android:name=".facedetect.FaceDetectActivity"></activity>
         <activity android:name=".text.TextRecognitionActivity" />
-        <activity android:name=".barcode.BarcodeActivity" />
         <activity android:name=".OptionsActivity" />
         <activity android:name=".MainActivity">
 

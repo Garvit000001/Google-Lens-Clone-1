@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImageLabel.ImageLabelActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".facedetect.FaceDetectActivity">
     <Button
-        android:id="@+id/btnTextR"
+        android:id="@+id/btnFaceR"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginBottom="50dp"
         android:scaleType="fitCenter"
-        android:text="start text recognition"
+        android:text="start face recognition"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,13 +21,13 @@
 
 
     <androidx.camera.view.PreviewView
-        android:id="@+id/TextViewFinder"
+        android:id="@+id/FaceViewFinder"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </androidx.camera.view.PreviewView>
 
     <TextView
-        android:id="@+id/tvRecognisedText"
+        android:id="@+id/FaceDetectText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,6 +36,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:text="@string/label" />
+        android:text="Smiling Probability" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

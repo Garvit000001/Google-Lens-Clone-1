@@ -20,6 +20,7 @@
         <Button
             android:id="@+id/btnLabeler"
             android:layout_width="match_parent"
+            android:backgroundTint="#0fb3f0"
             android:layout_height="match_parent"
             android:text="Image labeler"
             android:layout_weight="1"
@@ -31,6 +32,7 @@
             android:id="@+id/btnTextR"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/orange"
             android:text="Text Recognition"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
@@ -45,6 +47,7 @@
         android:layout_margin="10dp">
         <Button
             android:id="@+id/btnFace"
+            android:backgroundTint="#FDBE02"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Face Detection"
@@ -52,7 +55,7 @@
             android:layout_marginRight="10dp"/>
 
         <Button
-            android:id="@+id/btnLabel"
+            android:id="@+id/btnBarcode"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Bar code scanner"
